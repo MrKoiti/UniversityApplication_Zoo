@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Выдача еды</title>
+</head>
+<body>
+<h1>Выдача еды</h1>
+
+<div class="container">
+    <div class="row">
+        {% for i in range(1, 31) %}
+        <div class="col-4">
+            <button class="button" id="button-{{ i }}" onclick="sendRequest({{ i }})">
+                {{ i }}
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+            function sendRequest(animalId) {
+                // Отправляем запрос на сервер для выдачи еды
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/feed", true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.send(JSON.stringify({
+                    animal_id: animalId
+                }));
+
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        alert("Еда выдана");
+                    } else {
+                        alert(xhr.responseText);
+                    }
+                };
+            }
+        </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Catalog</title>
+  <style>
+  table {
+   border-collapse: collapse;
+   width: 100%;
+  }
+
+  th, td {
+   text-align: left;
+   padding: 8px;
+   border-bottom: 1px solid #ddd;
+  }
+
+  tr:hover {
+   background-color: #f5f5f5;
+  }
+
+  button {
+   margin: 10px;
+   padding: 10px;
+   font-size: 16px;
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+  }
+
+  button:hover {
+   background-color: #3e8e41;
+  }
+ </style>
+</head>
+<body>
+<block class="block">
+  <a href="man">Работники</a> <a href="animals">Животные</a> <a href="animal_menu">Меню для животных</a> <a  href="animal_type">Виды животных</a>
+
+  <a href="add_man">Добавить работника</a> <a href="add_animal">Добавить особь</a> <a href="add_animal_menu">Добавить меню</a> <a href="add_animal_type">Добавить вид</a>
+
+  <a href="delete_man">Удалить работника</a> <a href="delete_animal">Удалить особь</a> <a href="delete_animal_menu">Удалить меню</a> <a href="delete_animal_type">Удалить вид</a>
+
+  <a href="byWeight_param">Найти особь по весу</a>
+</block>
+
+<h1>Животные</h1>
+
+<div class="container" th:each = "animal : ${animals}">
+  <div class="books">
+    <div class="book">
+      <div class="book-info">
+        <h2 th:text = ${animal.animal_name}>Имя животного</h2>
+        <p><strong>ID животного:</strong><p th:text = "${animal.id_animal}"></p></p>
+        <p><strong>ID вида: </strong><p th:text = "${animal.id_animal_type}"></p></p>
+        <p><strong>Состояние здоровья:</strong><p th:text = "${animal.health_state}"></p></p>
+        <p><strong>Вес:</strong><p th:text = "${animal.weight}"></p></p>
+        <p><strong>Рост:</strong><p td th:text="${animal.height}"></p></p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
